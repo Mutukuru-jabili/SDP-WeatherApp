@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173") // allow frontend to call backend
+@CrossOrigin(origins = "http://localhost:5173")
+ // allow frontend to call backend
 public class AuthController {
 
     private final AuthService authService;

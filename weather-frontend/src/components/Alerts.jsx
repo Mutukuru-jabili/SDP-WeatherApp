@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/alerts.css";
+import "../css/Alerts.css";
 
 export default function Alerts({ weather }) {
   if (!weather) {

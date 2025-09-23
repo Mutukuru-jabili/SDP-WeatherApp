@@ -5,7 +5,7 @@ import {
   getAlerts,
 } from "../api/weatherApi";
 import Navbar from "../components/Navbar";
-import "../css/home.css";
+import "../css/Home.css";
 import Alerts from "../components/Alerts";
 
 console.log("Weather API URL:", import.meta.env.VITE_WEATHER_API_URL);
