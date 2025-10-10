@@ -1,5 +1,11 @@
 pipeline {
   agent any
+  environment {
+    TOMCAT_HOME = 'D:\\Program Files\\Apache Software Foundation\\Tomcat 9.0'
+    SERVICE_NAME = 'Tomcat9'
+    FRONTEND_CTX = 'reactweatherfrontend'
+    BACKEND_WAR  = 'springbootweatherapi.war'
+  }
 
   stages {
     stage('Build Frontend') {
@@ -11,20 +17,20 @@ pipeline {
       }
     }
 
-    stage('Deploy Frontend to Tomcat') {
+    stage('Deploy Frontend to Tomcat9') {
       steps {
-        bat '''
-        net stop Tomcat10
+        bat """
+        net stop %SERVICE_NAME%
 
-        if exist "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend" (
-            rmdir /S /Q "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
+        if exist "%TOMCAT_HOME%\\webapps\\%FRONTEND_CTX%" (
+            rmdir /S /Q "%TOMCAT_HOME%\\webapps\\%FRONTEND_CTX%"
         )
-        mkdir "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
-        xcopy /E /I /Y "weather-frontend\\dist\\*" "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
+        mkdir "%TOMCAT_HOME%\\webapps\\%FRONTEND_CTX%"
+        xcopy /E /I /Y "weather-frontend\\dist\\*" "%TOMCAT_HOME%\\webapps\\%FRONTEND_CTX%"
 
         echo === WEBAPPS AFTER FRONTEND ===
-        dir "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps"
-        '''
+        dir "%TOMCAT_HOME%\\webapps"
+        """
       }
     }
 
@@ -37,22 +43,18 @@ pipeline {
       }
     }
 
-    stage('Deploy Backend to Tomcat') {
+    stage('Deploy Backend to Tomcat9') {
       steps {
-        bat '''
-        if exist "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\springbootweatherapi.war" (
-            del /Q "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\springbootweatherapi.war"
-        )
-        if exist "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\springbootweatherapi" (
-            rmdir /S /Q "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\springbootweatherapi"
-        )
-        copy "weather-backend\\target\\springbootweatherapi.war" "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\"
+        bat """
+        if exist "%TOMCAT_HOME%\\webapps\\%BACKEND_WAR%" del /Q "%TOMCAT_HOME%\\webapps\\%BACKEND_WAR%"
+        if exist "%TOMCAT_HOME%\\webapps\\springbootweatherapi" rmdir /S /Q "%TOMCAT_HOME%\\webapps\\springbootweatherapi"
+        copy "weather-backend\\target\\%BACKEND_WAR%" "%TOMCAT_HOME%\\webapps\\"
 
         echo === WEBAPPS AFTER BACKEND COPY ===
-        dir "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps"
+        dir "%TOMCAT_HOME%\\webapps"
 
-        net start Tomcat10
-        '''
+        net start %SERVICE_NAME%
+        """
       }
     }
   }
