@@ -1,20 +1,174 @@
-.auth-container {
-  max-width: 400px;
-  margin: 3em auto;
-  padding: 2em;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* Add your Signin page CSS styles here */
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f7fa;
 }
 
-.auth-container input {
+.auth-card {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  overflow: hidden;
+  max-width: 800px;
   width: 100%;
-  margin-bottom: 1em;
-  padding: 0.5em;
+}
+
+.auth-left {
+  background: #1976d2;
+  color: #fff;
+  padding: 48px 32px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  background: #fff;
+  color: #1976d2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-right: 12px;
+}
+
+.left-title {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+}
+
+.left-sub {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.auth-right {
+  flex: 1;
+  padding: 48px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.hint {
+  display: block;
+  margin-bottom: 6px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 1rem;
 }
 
-.auth-container button {
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.link {
+  color: #1976d2;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btn {
   width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+}
+
+.divider {
+  text-align: center;
+  margin: 24px 0;
+  color: #aaa;
+  position: relative;
+}
+
+.divider span {
+  background: #fff;
+  padding: 0 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.divider:before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #eee;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.social {
+  flex: 1;
+  padding: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafbfc;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-footer {
+  text-align: center;
+  font-size: 0.97rem;
+  color: #555;
 }

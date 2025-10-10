@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/App.css";
-
+import "../css/auth.css";
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
