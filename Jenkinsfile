@@ -17,11 +17,11 @@ pipeline {
         stage('Deploy Frontend to Tomcat') {
             steps {
                 bat '''
-                if exist "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend" (
-                    rmdir /S /Q "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
+                if exist "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\weather-app" (
+                    rmdir /S /Q "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\weather-app"
                 )
-                mkdir "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
-                xcopy /E /I /Y weather-frontend\\dist\\* "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\reactweatherfrontend"
+                mkdir "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\weather-app"
+                xcopy /E /I /Y weather-frontend\\dist\\* "D:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\weather-app"
                 '''
             }
         }
