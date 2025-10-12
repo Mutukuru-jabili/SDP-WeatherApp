@@ -18,9 +18,8 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api/favorites")
+@RequestMapping("/api")
 public class FavoriteLocationController {
-
     private final FavoriteLocationRepository repository;
 
     // ✅ Explicit constructor for dependency injection
